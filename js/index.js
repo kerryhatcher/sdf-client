@@ -65,12 +65,13 @@ function onGpsSuccess(position) {
 
     //console.log('test3');
 
-    console.log('test4');
+    console.log(position.coords.latitude);
     //console.log(userlocation);
-    var userlocation = $.ajax({
-        url: 'http://192.168.0.19:5000/api/locations',
+    var locdata = userlocation = $.ajax({
+        url: 'http://gsdf5th.herokuapp.com/api/locations',
+        async: 'false',
         type: 'POST',
-        data: {"lat" : position.coords.latitude, "log" : position.coords.longitude, "user" : "tester"},
+        data: {"lat" : position.coords.latitude, "log" : position.coords.longitude, "user" : "hatch6974"},
         datatype: "json",
         success: function(result) {
             console.log(result)
@@ -79,10 +80,10 @@ function onGpsSuccess(position) {
             console.log("Fail")
         }
     });
-    userlocation.done(function(result) {
-        console.log("DONE")
-    });
-    setTimeout(console.log(userlocation), 10000);
+    //while (locdata.readyState = 1){
+        console.log(locdata.readyState);
+    //}
+
 }
 
 // onError Callback receives a PositionError object a

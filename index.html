@@ -52,6 +52,7 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="js/mgrs.js"></script>
+        <script type="text/javascript" src="js/jquery.jsonp.js"></script>
 
         <script type="text/javascript" src="js/index.js"></script>
 
@@ -59,8 +60,11 @@
             app.initialize();
 
 
-            var options = { enableHighAccuracy: true };
-            $(document).ready(navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, options));
+            var options = { enableHighAccuracy: false };
+            $.support.cors = true;
+            $(document).ready(
+                    navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, options)
+            );
         </script>
     </body>
 </html>
